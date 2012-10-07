@@ -17,6 +17,7 @@
 		47D8EAA8162219AE00EEFBA4 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47D8EAA6162219AE00EEFBA4 /* ViewController.xib */; };
 		47D8EAB216221B1000EEFBA4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47D8EAB116221B1000EEFBA4 /* QuartzCore.framework */; };
 		47D8EABA1622205A00EEFBA4 /* PercentageChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D8EAB91622205A00EEFBA4 /* PercentageChart.m */; };
+		47D8EABD162220D800EEFBA4 /* PercentageChartLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D8EABC162220D800EEFBA4 /* PercentageChartLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		47D8EAB116221B1000EEFBA4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		47D8EAB81622205A00EEFBA4 /* PercentageChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentageChart.h; sourceTree = "<group>"; };
 		47D8EAB91622205A00EEFBA4 /* PercentageChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentageChart.m; sourceTree = "<group>"; };
+		47D8EABB162220D800EEFBA4 /* PercentageChartLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentageChartLayer.h; sourceTree = "<group>"; };
+		47D8EABC162220D800EEFBA4 /* PercentageChartLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentageChartLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,8 @@
 				47D8EA98162219AE00EEFBA4 /* Supporting Files */,
 				47D8EAB81622205A00EEFBA4 /* PercentageChart.h */,
 				47D8EAB91622205A00EEFBA4 /* PercentageChart.m */,
+				47D8EABB162220D800EEFBA4 /* PercentageChartLayer.h */,
+				47D8EABC162220D800EEFBA4 /* PercentageChartLayer.m */,
 			);
 			path = PercentageChart;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				47D8EAA2162219AE00EEFBA4 /* AppDelegate.m in Sources */,
 				47D8EAA5162219AE00EEFBA4 /* ViewController.m in Sources */,
 				47D8EABA1622205A00EEFBA4 /* PercentageChart.m in Sources */,
+				47D8EABD162220D800EEFBA4 /* PercentageChartLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

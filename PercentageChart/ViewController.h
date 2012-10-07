@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PercentageChart.h"
 
 @interface ViewController : UIViewController
+{
+    IBOutlet PercentageChart *chart;
+}
+
+-(IBAction) onGo:(id)sender;
 
 @end

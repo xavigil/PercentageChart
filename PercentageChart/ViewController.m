@@ -9,6 +9,9 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+{
+    CGFloat _percentage;
+}
 
 @end
 
@@ -17,7 +20,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    _percentage = 10.0;
+    
+
 }
 
 - (void)viewDidUnload
@@ -29,6 +34,14 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+-(void) onGo:(id)sender
+{
+    chart.percentage = _percentage;
+    _percentage +=20;
+    if( _percentage > 100.0 )
+        _percentage = 100.0;
 }
 
 @end

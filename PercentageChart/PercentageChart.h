@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+
+#import "PercentageChartLayer.h"
 
 @interface PercentageChart : UIView
+
+@property(nonatomic) CGFloat percentage;
 
 @end
