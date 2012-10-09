@@ -14,5 +14,9 @@
 @interface PercentageChart : UIView
 
 @property(nonatomic) CGFloat percentage;
+@property(nonatomic, strong) UIColor *mainColor;
+@property(nonatomic, strong) UIColor *secondaryColor;
+@property(nonatomic, strong) UIColor *lineColor;
+
 
 @end

@@ -22,10 +22,31 @@
 @implementation PercentageChart
 
 @synthesize percentage;
+@synthesize mainColor;
+@synthesize secondaryColor;
+@synthesize lineColor;
 
 -(void) setPercentage:(CGFloat)newValue
 {
     percentage = newValue;
+    [self refresh];
+}
+
+-(void) setMainColor:(UIColor *)newColor
+{
+    mainColor = newColor;
+    [self refresh];
+}
+
+-(void) setSecondaryColor:(UIColor *)newColor
+{
+    secondaryColor = newColor;
+    [self refresh];
+}
+
+-(void) setLineColor:(UIColor *)newColor
+{
+    lineColor = newColor;
     [self refresh];
 }
 
@@ -59,8 +80,9 @@
     
     PercentageChartLayer *layer = (PercentageChartLayer *) _mainLayer;
     layer.percentage = self.percentage;
-    
-    layer.mainColor = [UIColor redColor];
+    layer.mainColor = self.mainColor;
+    layer.secondaryColor = self.secondaryColor;
+    layer.lineColor = self.lineColor;
 }
 
 
