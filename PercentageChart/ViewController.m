@@ -21,11 +21,15 @@
 {
     [super viewDidLoad];
     _percentage = 10.0;
+
     
     UIColor *orange = [UIColor colorWithRed:0.83 green:0.38 blue:0.0 alpha:1.0];
     [chart setMainColor:orange];
     [chart setSecondaryColor:[UIColor darkGrayColor]];
     [chart setLineColor:[UIColor orangeColor]];
+    [chart setFontName:@"Arial"];
+    [chart setText:@"progress"];
+
 }
 
 - (void)viewDidUnload
@@ -44,7 +48,7 @@
     chart.percentage = _percentage;
     _percentage +=20;
     if( _percentage > 100.0 )
-        _percentage -= 80.0;
+        _percentage -= 101.0;
 }
 
 @end

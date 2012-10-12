@@ -22,13 +22,22 @@
 @implementation PercentageChart
 
 @synthesize percentage;
+@synthesize text;
 @synthesize mainColor;
 @synthesize secondaryColor;
 @synthesize lineColor;
+@synthesize fontName;
+@synthesize fontSize;
 
 -(void) setPercentage:(CGFloat)newValue
 {
     percentage = newValue;
+    [self refresh];
+}
+
+-(void) setText:(NSString *)newText
+{
+    text = newText;
     [self refresh];
 }
 
@@ -50,10 +59,26 @@
     [self refresh];
 }
 
+-(void) setFontName:(NSString *)aFontName
+{
+    fontName = aFontName;
+    [self refresh];
+}
+
+-(void) setFontSize:(CGFloat)newSize
+{
+    fontSize = newSize;
+    [self refresh];
+}
+
 -(void) initialize
 {
     _mainLayer = [PercentageChartLayer layer];
     [self.layer addSublayer:_mainLayer];    
+    
+    self.text = [NSString string];
+    self.fontName = @"Helvetica";
+    self.fontSize = 30.0;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -80,9 +105,20 @@
     
     PercentageChartLayer *layer = (PercentageChartLayer *) _mainLayer;
     layer.percentage = self.percentage;
+    layer.text = self.text;
     layer.mainColor = self.mainColor;
     layer.secondaryColor = self.secondaryColor;
     layer.lineColor = self.lineColor;
+    layer.fontName = self.fontName;
+    layer.fontSize = self.fontSize;
+}
+
+-(void)willMoveToSuperview:(UIView *)newSuperview 
+{
+    // We change the initial value so the chart gets drawn.
+    self.percentage = 0.1;
+    self.percentage = 0.0;
+    [self refresh];
 }
 
 

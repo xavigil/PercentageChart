@@ -12,9 +12,15 @@
 
 @dynamic percentage;
 
+@synthesize text;
+
 @synthesize mainColor;
 @synthesize secondaryColor;
 @synthesize lineColor;
+
+@synthesize fontName;
+@synthesize fontSize;
+
 
 -(CABasicAnimation *)makeAnimationForKey:(NSString *)key 
 {
@@ -39,12 +45,24 @@
     if (self = [super initWithLayer:aLayer]) 
     {
         if ([aLayer isKindOfClass:[PercentageChartLayer class]]) 
-        {
+        {            
             PercentageChartLayer *layer = (PercentageChartLayer *)aLayer;
+            
+            if ([layer respondsToSelector:@selector(setContentsScale:)])
+            {
+                layer.contentsScale = [[UIScreen mainScreen] scale];
+            }
+            
             self.percentage = layer.percentage;
+            
+            self.text = layer.text;
+            
             self.mainColor = layer.mainColor;
             self.secondaryColor = layer.secondaryColor;            
-            self.lineColor = layer.lineColor;
+            self.lineColor = layer.lineColor;         
+            
+            self.fontName = layer.fontName;
+            self.fontSize = layer.fontSize;
         }
     }
     
@@ -110,11 +128,37 @@
     
     CGContextSetFillColorWithColor( ctx, self.lineColor.CGColor );
     CGContextSetStrokeColorWithColor( ctx, self.lineColor.CGColor );
-    CGContextSetLineCap( ctx, kCGLineCapButt );
-    CGContextSetLineWidth( ctx, 5 );
+    CGContextSetLineCap( ctx, kCGLineCapRound );
+    CGContextSetLineWidth( ctx, 3 );
     
     CGContextDrawPath( ctx, kCGPathFillStroke );
     
+
+    // Text (For drawing the text, we use CoreText to support UTF 8 codification)
+    
+	// First we set the text matrix to flip our text upside down. We do this because 
+    // the context itself is flipped upside down relative to the expected orientation 
+    // for drawing text.
+    CGContextSetTextMatrix( ctx, CGAffineTransformMakeScale( 1.0, -1.0 ));
+    
+    NSString *str = [NSString stringWithFormat:@"%.1f%@ %@", self.percentage, @"%", self.text];
+    CGSize strSize = [str sizeWithFont:[UIFont fontWithName:self.fontName size:self.fontSize] 
+                     constrainedToSize:self.frame.size];
+    
+    CTFontRef sysUIFont = CTFontCreateWithName( (__bridge CFStringRef)self.fontName, self.fontSize, NULL ); 
+    
+    NSDictionary *attributesDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    (__bridge id)sysUIFont, (id)kCTFontAttributeName,
+                                    self.mainColor.CGColor, (id)kCTForegroundColorAttributeName, nil];    
+    NSAttributedString *attributedStr = [[NSAttributedString alloc] initWithString:str 
+                                                               attributes:attributesDict];
+    
+    CTLineRef lineref = CTLineCreateWithAttributedString( (__bridge CFAttributedStringRef)attributedStr );
+    CGContextSetTextPosition( ctx, center.x - ( strSize.width/2.0 ), center.y + strSize.height );
+    CTLineDraw( lineref, ctx );
+    
+    CFRelease( lineref );
+	CFRelease( sysUIFont );
     
 }
 

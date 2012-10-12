@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <CoreText/CoreText.h>
 
 #define DEG2RAD(angle) angle*M_PI/180.0
 
@@ -16,12 +17,19 @@
 #define CENTER_WIDTH 8
 
 @interface PercentageChartLayer : CALayer
+{
+    
+}
 
 @property(nonatomic) CGFloat percentage;
+@property(nonatomic, strong) NSString *text;
 
 @property(nonatomic) UIColor *mainColor;
 @property(nonatomic) UIColor *secondaryColor;
 @property(nonatomic) UIColor *lineColor;
+
+@property(nonatomic, strong) NSString *fontName;
+@property(nonatomic) CGFloat fontSize;
 
 - (id)initWithLayer:(id)aLayer;
 
