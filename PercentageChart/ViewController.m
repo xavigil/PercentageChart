@@ -24,12 +24,15 @@
 
     
     UIColor *orange = [UIColor colorWithRed:0.83 green:0.38 blue:0.0 alpha:1.0];
+    
     [chart setMainColor:orange];
     [chart setSecondaryColor:[UIColor darkGrayColor]];
     [chart setLineColor:[UIColor orangeColor]];
-    [chart setFontName:@"Arial"];
+    [chart setFontName:@"Helvetica-Bold"];
+    [chart setFontSize:30.0];
     [chart setText:@"progress"];
 
+    [chart setPercentage:73.5];
 }
 
 - (void)viewDidUnload

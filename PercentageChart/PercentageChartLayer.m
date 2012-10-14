@@ -79,7 +79,9 @@
 
 -(void)drawInContext:(CGContextRef)ctx 
 {
-    CGPoint center = CGPointMake( self.bounds.size.width/2, self.bounds.size.height/2 );
+    CGSize sizeControl = [@"sample" sizeWithFont:[UIFont fontWithName:self.fontName size:self.fontSize] constrainedToSize:self.frame.size];
+    
+    CGPoint center = CGPointMake( self.bounds.size.width/2, self.bounds.size.height - sizeControl.height - 10.0 );
     CGFloat radius = MIN( center.x, center.y ) - 1;
 
     CGFloat startingAngleRad = DEG2RAD( INITIAL_ANGLE );
