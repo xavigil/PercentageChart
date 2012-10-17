@@ -1,7 +1,7 @@
 PercentageChart
 ===============
 
-UIView object that animates a chart showing a percentage value.
+UIView object that animates a chart showing a percentage value. As done by <a href="http://www.ducksboard.com">Ducksboard</a>.
 
 PercentageChart properties
 ==========================
