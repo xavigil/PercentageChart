@@ -31,6 +31,8 @@
 
 -(void) setPercentage:(CGFloat)newValue
 {
+    if( newValue > 100.0 ) newValue = 100.0;
+    else if( newValue < 0.0 ) newValue = 0.0;
     percentage = newValue;
     [self refresh];
 }

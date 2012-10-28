@@ -106,17 +106,20 @@
     CGContextDrawPath( ctx, kCGPathFillStroke );
     
     // Background
-    CGContextBeginPath( ctx );
-    CGContextMoveToPoint( ctx, center.x, center.y );    
-    CGContextAddLineToPoint( ctx, endPoint.x, endPoint.y );
-    CGContextAddArc( ctx, center.x, center.y, radius, currentAngleRad, endingAngleRad, NO );
-    CGContextClosePath(ctx);
-    
-    CGContextSetFillColorWithColor( ctx, self.secondaryColor.CGColor );
-    CGContextSetStrokeColorWithColor( ctx, self.secondaryColor.CGColor );
-    CGContextSetLineWidth( ctx, 1 );
-    
-    CGContextDrawPath( ctx, kCGPathFillStroke );
+    if( self.percentage < 100.0 )
+    {
+        CGContextBeginPath( ctx );
+        CGContextMoveToPoint( ctx, center.x, center.y );    
+        CGContextAddLineToPoint( ctx, endPoint.x, endPoint.y );
+        CGContextAddArc( ctx, center.x, center.y, radius, currentAngleRad, endingAngleRad, NO );
+        CGContextClosePath(ctx);
+        
+        CGContextSetFillColorWithColor( ctx, self.secondaryColor.CGColor );
+        CGContextSetStrokeColorWithColor( ctx, self.secondaryColor.CGColor );
+        CGContextSetLineWidth( ctx, 1 );
+        
+        CGContextDrawPath( ctx, kCGPathFillStroke );
+    }
 
     // Center & progress line
     CGContextBeginPath( ctx );    
