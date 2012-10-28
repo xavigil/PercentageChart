@@ -3,6 +3,8 @@ PercentageChart
 
 UIView object that animates a chart showing a percentage value. As done by <a href="http://www.ducksboard.com">Ducksboard</a>.
 
+![Portrait](https://raw.github.com/xgil78/PercentageChart/master/preview.jpg)
+
 PercentageChart properties
 ==========================
 
