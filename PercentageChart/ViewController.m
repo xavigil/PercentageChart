@@ -21,13 +21,10 @@
 {
     [super viewDidLoad];
     _percentage = 10.0;
-
     
-    UIColor *orange = [UIColor colorWithRed:0.83 green:0.38 blue:0.0 alpha:1.0];
-    
-    [chart setMainColor:orange];
+    [chart setMainColor:MAIN_ORANGE];
+    [chart setLineColor:LINE_ORANGE];
     [chart setSecondaryColor:[UIColor darkGrayColor]];
-    [chart setLineColor:[UIColor orangeColor]];
     [chart setFontName:@"Helvetica-Bold"];
     [chart setFontSize:30.0];
     [chart setText:@"progress"];
@@ -48,10 +45,26 @@
 
 -(void) onGo:(id)sender
 {
-    chart.percentage = _percentage;
+    [chart setPercentage:_percentage];
+    if( [chart percentage] > 85 )
+    {
+        [chart setMainColor:MAIN_RED];
+        [chart setLineColor:LINE_RED];
+    }
+    else if( [chart percentage] > 65 )
+    {
+        [chart setMainColor:MAIN_ORANGE];
+        [chart setLineColor:LINE_ORANGE];
+    }
+    else
+    {
+        [chart setMainColor:MAIN_GREEN];
+        [chart setLineColor:LINE_GREEN];
+    }
     _percentage +=20;
     if( _percentage > 100.0 )
         _percentage -= 101.0;
+    
 }
 
 @end

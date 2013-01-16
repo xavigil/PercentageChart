@@ -14,9 +14,9 @@
 
 @synthesize text;
 
-@synthesize mainColor;
+@dynamic mainColor;
 @synthesize secondaryColor;
-@synthesize lineColor;
+@dynamic lineColor;
 
 @synthesize fontName;
 @synthesize fontSize;
@@ -34,7 +34,7 @@
 
 -(id<CAAction>)actionForKey:(NSString *)event 
 {
-    if ( [event isEqualToString:@"percentage"] ) 
+    if ( [event isEqualToString:@"percentage"] || [event isEqualToString:@"mainColor"] || [event isEqualToString:@"lineColor"] )
         return [self makeAnimationForKey:event];
     
     return [super actionForKey:event];
@@ -71,7 +71,7 @@
 
 + (BOOL)needsDisplayForKey:(NSString *)key 
 {    
-    if( [key isEqualToString:@"percentage"] )
+    if( [key isEqualToString:@"percentage"] || [key isEqualToString:@"mainColor"] || [key isEqualToString:@"lineColor"] )
         return YES;
     
     return [super needsDisplayForKey:key];
@@ -99,8 +99,8 @@
     CGContextAddArc( ctx, center.x, center.y, radius, startingAngleRad, currentAngleRad, NO );
     CGContextClosePath(ctx);
     
-    CGContextSetFillColorWithColor( ctx, self.mainColor.CGColor );
-    CGContextSetStrokeColorWithColor( ctx, self.mainColor.CGColor );
+    CGContextSetFillColorWithColor( ctx, self.mainColor );
+    CGContextSetStrokeColorWithColor( ctx, self.mainColor );
     CGContextSetLineWidth( ctx, 1 );
     
     CGContextDrawPath( ctx, kCGPathFillStroke );
@@ -131,8 +131,8 @@
     
     CGContextClosePath(ctx);
     
-    CGContextSetFillColorWithColor( ctx, self.lineColor.CGColor );
-    CGContextSetStrokeColorWithColor( ctx, self.lineColor.CGColor );
+    CGContextSetFillColorWithColor( ctx, self.lineColor );
+    CGContextSetStrokeColorWithColor( ctx, self.lineColor );
     CGContextSetLineCap( ctx, kCGLineCapRound );
     CGContextSetLineWidth( ctx, 3 );
     
@@ -154,7 +154,7 @@
     
     NSDictionary *attributesDict = [NSDictionary dictionaryWithObjectsAndKeys:
                                     (__bridge id)sysUIFont, (id)kCTFontAttributeName,
-                                    self.mainColor.CGColor, (id)kCTForegroundColorAttributeName, nil];    
+                                    self.mainColor, (id)kCTForegroundColorAttributeName, nil];
     NSAttributedString *attributedStr = [[NSAttributedString alloc] initWithString:str 
                                                                attributes:attributesDict];
     

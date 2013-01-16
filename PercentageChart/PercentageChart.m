@@ -108,9 +108,9 @@
     PercentageChartLayer *layer = (PercentageChartLayer *) _mainLayer;
     layer.percentage = self.percentage;
     layer.text = self.text;
-    layer.mainColor = self.mainColor;
+    layer.mainColor = self.mainColor.CGColor;
     layer.secondaryColor = self.secondaryColor;
-    layer.lineColor = self.lineColor;
+    layer.lineColor = self.lineColor.CGColor;
     layer.fontName = self.fontName;
     layer.fontSize = self.fontSize;
 }

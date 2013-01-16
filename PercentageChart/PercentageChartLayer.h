@@ -24,9 +24,9 @@
 @property(nonatomic) CGFloat percentage;
 @property(nonatomic, strong) NSString *text;
 
-@property(nonatomic) UIColor *mainColor;
+@property(nonatomic) CGColorRef mainColor;
 @property(nonatomic) UIColor *secondaryColor;
-@property(nonatomic) UIColor *lineColor;
+@property(nonatomic) CGColorRef lineColor;
 
 @property(nonatomic, strong) NSString *fontName;
 @property(nonatomic) CGFloat fontSize;
